@@ -2,7 +2,7 @@ use strict;
 
 package XHTML::Instrumented::Form;
 
-our $VERSION = '0.00';
+our $VERSION = '0.01';
 
 use XHTML::Instrumented::Form::Control;
 use XHTML::Instrumented::Form::Select;
@@ -283,7 +283,7 @@ sub update_argumants
 __END__
 =head1 NAME
 
-Data::Tabular::Form - Intrament a form
+XHTML::Instramented::Form - XHTML::Instramented Form Object
 
 =head1 SYNOPSIS
 
@@ -306,21 +306,37 @@ my $form = $template->get_form(name => 'myform');
 =over
 
 =item new
+
 =item add_params
+
 =item add_defaults
+
 =item element_values
+
 =item element_value
+
 =item _control
+
 =item set_select_data
+
 =item add_element
+
 =item set_element
+
 =item args
+
 =item params
+
 =item context
+
 =item is_select
+
 =item get_element
+
 =item is_element
+
 =item auto
+
 =item update_argumants
 
 =back

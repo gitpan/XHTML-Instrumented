@@ -53,11 +53,9 @@ __END__
 
 =head1 NAME
 
-Data::Tabular::Form::Option - An Option Form Element
+XHTML::Instrumented::Form::Option - An Option Form Element
 
 =head1 SYNOPSIS
-
-
 
 =head1 API
 
@@ -77,9 +75,13 @@ to hold information about the Options available.
 =over
 
 =item as_args
+
 =item selected
+
 =item disabled
+
 =item text
+
 =item value
 
 =back
