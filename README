@@ -1,0 +1,56 @@
+NAME
+    XHTML::Instrumented - packages to control XHTML
+
+DESCRIPTION
+    This package takes valid XHTML as input and outputs valid XHTML that may
+    be changed in several ways.
+
+SYNOPSIS
+API
+  Constructor
+    new(file => [*filename* | SCALAR ])
+        Get a XHTML::Instrumented object.
+
+  Functions
+    parse(input)
+        This causes the input to be parsed.
+
+        if *input* is string it is assumed to be a filename. If *input* is a
+        SCALAR is is treated as HTML;
+
+    instrument
+        This function take the template and the control structure and
+        returns a block of XHTML.
+
+  Methods
+    output
+        This returns the modified html.
+
+    get_form
+        This returns a form object.
+
+    loop
+           headers => [array of headers]
+           data => [arrays of data]
+           default => default value for any undefined data
+           inclusive => include the tag that started the loop
+
+        inclusive is normally controlled in the template.
+
+    replace
+    args
+        same as replace(args => { @_ });
+
+  Functions
+    path
+        Get the default path to the templates
+
+    outpath
+        Get the default path to the compiled templates
+
+    outfile
+        Get the full path and filename of the compiled template.
+
+AUTHOR
+    "G. Allen Morris III" <gam3@gam3.net>
+

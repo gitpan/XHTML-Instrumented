@@ -1,0 +1,326 @@
+use strict;
+use warnings;
+
+package WWW::Template::Entry;
+
+use WWW::Template::Control;
+use Params::Validate qw(validate HASHREF);
+
+our @unused;
+
+sub new()
+{
+    my $class = shift;
+    my %p =  Params::Validate::validate( @_, {
+            args => HASHREF,
+            flags => HASHREF,
+            special => { isa => 'WWW::Template::Context' },
+            start => 1,
+            form => 0,
+            control => { isa => 'WWW::Template::Control' },
+            id => 0,
+	    name => 0,
+	}
+    );
+
+    bless({ data => [], %p }, $class);
+}
+
+sub copy()
+{
+    my $self = shift;
+    my %p =  Params::Validate::validate( @_, {
+            args => 0,
+            flags => 0,
+            special => 0,
+            start => 0,
+            form => 0,
+            control => { isa => 'WWW::Template::Control' },
+	    data => 0,
+	    extra => 0,
+	}
+    );
+
+    bless({
+        date => [],
+	%{$self},
+	args => {%{$self->{args}}},
+	%p 
+    }, ref($self));
+}
+
+sub child
+{
+    my $self = shift;
+    my %p = Params::Validate::validate(@_,
+	{
+	    args => 1,
+            start => 1,
+        }
+    );
+
+    my $context = $self->context;
+    my $form = $self->{form};
+    my $control;
+    my $args = $p{args};
+    my $id;
+    my @flags;
+
+    if (my $id_full = $args->{id}) {
+	($id, @flags) = split('\.', $id_full);
+
+	my $x = $context->get_id($id);
+use Data::Dumper;
+	warn ('id in form ' . $id . ' ' . Dumper $control) if $control;
+	$control = $x;
+if ($control) {
+    warn 'A ', $id, ' ', $x unless UNIVERSAL::isa($control, 'WWW::Template::Control');
+    $control = undef unless UNIVERSAL::isa($control, 'WWW::Template::Control');
+}
+    }
+# form data override the context data
+    if ($self->{form}) {
+	if (my $name = $args->{name}) {
+	    $form = $self->{form};
+	    
+	    $control = $form->get_element($name);
+warn 'B ', $name, ' ', $control unless UNIVERSAL::isa($control, 'WWW::Template::Control');
+	    $control = undef unless UNIVERSAL::isa($control, 'WWW::Template::Control');
+	}
+    }
+    if ($p{start} eq 'form') {
+	die 'embeded form' if $self->{form};
+        if (my $name = $args->{name}) {
+	    $form = $self->context->get_form($name);
+            $control = $form->control if $form;
+	}
+    }
+
+    $control ||= WWW::Template::Control::Dummy->new();
+
+    ref($self)->new(
+        %p,
+	special => $self->{special},
+	form => $form,
+	flags => { map({ $_ => 1} @flags) },
+	id => $id,
+	control => $control,
+    );
+}
+
+sub prepend
+{
+    my $self = shift;
+
+    for my $child (@_) {
+	unshift(@{$self->{data}}, $child);
+    }
+}
+
+sub id
+{
+    my $self = shift;
+    $self->{id};
+}
+
+sub in_loop
+{
+    my $self = shift;
+    $self->{in_loop};
+}
+
+sub dataloop
+{
+    my $self = shift;
+    my $data = shift;
+
+    my %args = $self->args;
+    my $controp;
+    my $id = $self->id;
+
+    if ($id) {
+	$controp = $data->get_id($id);
+    } else {
+	$controp = WWW::Template::Control::Dummy->new();
+    }
+    my @new_children;
+    for my $child (@{$self->{data}}) {
+        if (ref($child)) {
+	    if (defined $controp && $controp->is_loop) {
+		while ($controp->data) {
+		    push(@new_children, $child->dataloop($controp));
+		    $controp->inc;
+		}
+	    } else {
+		push(@new_children, $child->dataloop($data));
+	    }
+	} else {
+	    push(@new_children, $child);
+	}
+    }
+    my $ret = $self->copy(
+        data => [ @new_children ],
+	control => $controp,
+	(extra => $data) x!! $controp->is_loop,
+    );
+
+    if (defined $args{class} && $args{class} eq ':data') {
+        $data->inc;
+    }
+
+    return $ret;
+}
+
+sub append
+{
+    my $self = shift;
+    if ($self->is_loop) {
+use Data::Dumper;
+warn Dumper $self, \@_;
+        my $loop = $self->control;
+        if ($loop->inclusive) {
+	    for my $child (@_) {
+		push(@{$self->{data}}, $child->dataloop($loop));
+	    }
+	} else {
+	    while ($loop->data) {
+use Data::Dumper;
+		for my $child (@_) {
+die Dumper $self->{data}, $child, $self->{data};
+		    push(@{$self->{data}}, $child->dataloop($loop));
+		}
+		$loop->inc;
+	    }
+	}
+
+    } else {
+	for my $child (@_) {
+	    my $loop;
+	    $loop = $child->control if ($child->is_loop);
+            
+	    if (ref($loop) && $loop->inclusive) {
+		while ($loop->data) {
+		    for my $child (@_) {
+			push(@{$self->{data}}, $child->dataloop($loop));
+		    }
+		    $loop->inc;
+		}
+	    } else {
+		push(@{$self->{data}}, $child);
+	    }
+	}
+    }
+}
+
+# accesor methods
+
+sub context
+{
+    my $self = shift;
+
+    $self->{special};
+}
+
+sub tag
+{
+    my $self = shift;
+
+    $self->{start};
+}
+
+sub args
+{
+    my $self = shift;
+
+    %{$self->{args}};
+}
+
+sub flags
+{
+    my $self = shift;
+
+    $self->{flags};
+}
+
+sub is_loop
+{
+    my $self = shift;
+
+    UNIVERSAL::isa($self->{control}, 'WWW::Template::Loop');
+}
+
+sub _get_id
+{
+    my $self = shift;
+
+    $self->{special}->get_id(@_);
+}
+
+# methods
+
+sub if
+{
+    my $self = shift;
+    my $ret = 1;
+
+    if (exists $self->{flags}{if})  {
+	$ret = $self->control->if;
+    }
+    return $ret;
+}
+
+sub children
+{
+    my $self = shift;
+    my @ret;
+
+    if ($self->if) {
+	for my $element (@{$self->{data}}) {
+	    if (ref($element)) {
+		push(@ret, $element->expand());
+	    } else {
+		push(@ret, $element);
+	    }
+	}
+    }
+    return @ret;
+}
+
+sub ___exp_args
+{
+    my $self = shift;
+    my $special = shift;
+
+    my %args = $special->args($self->args);
+
+    my $nargs = { %args };
+
+    join('', map({ qq( $_="$nargs->{$_}")} sort keys(%args)));
+}
+
+sub control
+{
+    my $self = shift;
+
+    $self->{control} || WWW::Template::Control::Dummy->new();
+}
+
+sub expand
+{
+    my $self = shift;
+    my @ret;
+
+    my $control = $self->control;
+    if ($self->if) {
+	@ret = $control->to_text(
+	    tag => $self->{start},
+	    children => [ $self->children ],
+	    args => { $self->args },
+	    flags => $self->flags,
+	);
+    }
+    join('', @ret);
+}
+
+1;
+__END__

@@ -1,0 +1,93 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.55.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 675bff769ab70dbae8d298723c1226fcba9f5ed8 Build.PL
+SHA1 12948fab3acac0567ecf37a30b324e76f4adba95 MANIFEST
+SHA1 b3a89e6761b0ae9a80a19284c7d2bc2ed9c0f4c6 META.yml
+SHA1 b3aa4916c2682439a79c9fada66e0689b32ad7dd Makefile.PL
+SHA1 ba6a52c634024e7473ec9d01cffe6400c4850d0c README
+SHA1 4e647b5d4922690a9ae9e9fddfea8a0061d71879 examples/checkbox.cgi
+SHA1 3f1c5cf536bb44e621203e757429454d88c91433 examples/index.cgi
+SHA1 b5a6b310fbad72f09d436aac5288104fc8e351b1 examples/multi.cgi
+SHA1 fc1083b9e8841c31ce0d0c704b5815dab5433b76 examples/test.html
+SHA1 3fb68e30935c1ffa3bc4ce6365749f656a68508b lib/XHTML/Instrumented.pm
+SHA1 04fbb3cc90fc64ecb810ad17ef68648910be946d lib/XHTML/Instrumented/Context.pm
+SHA1 4266d6caf0c1f4ddcfb7092f1ce7def87da4acf6 lib/XHTML/Instrumented/Control.pm
+SHA1 6b45717b12f9eeb1d45a173839a9170bd15c3ad1 lib/XHTML/Instrumented/Entry.pm
+SHA1 0f525fc8d5d2ff9a192f44d4c9945af4a184798a lib/XHTML/Instrumented/Form.pm
+SHA1 616f6b63cd05c335dcd2049917698a4af4d75add lib/XHTML/Instrumented/Form/Checkbox.pm
+SHA1 541e586ba29abb5c9ecc8448a27adb15a3662a0e lib/XHTML/Instrumented/Form/Control.pm
+SHA1 4008c176622b51d835a2a5d5da7ba4671b2ad4f1 lib/XHTML/Instrumented/Form/Element.pm
+SHA1 a8a0e6f3ae1868336e1765826702a782c3664179 lib/XHTML/Instrumented/Form/ElementControl.pm
+SHA1 20b59c8e448117feb7c7d3774cdaa5109fd6f881 lib/XHTML/Instrumented/Form/Hidden.pm
+SHA1 e06a8126341bf8d77fc1f906c6b5697dcd408329 lib/XHTML/Instrumented/Form/Option.pm
+SHA1 c9243438bfeb7555820a32d1e44d52927fa7aa3d lib/XHTML/Instrumented/Form/Select.pm
+SHA1 84746c6c6fecad838e348fb70e44fd2c767870b4 lib/XHTML/Instrumented/Loop.pm
+SHA1 f3556a296dd97839c2629f01979097245c777777 save
+SHA1 1e81bebc1e41c7dcd1e1f6dca5055ac025b1794e t/args.t
+SHA1 5d4c7d5824a934644b29b398aa5b14bd3620ba57 t/checkbox.t
+SHA1 1e6e289d1b1f8320495ca58b5cf772d8360cb438 t/checkbox_loop.t
+SHA1 72db95f4d13a848e59fb1c0454b18bd9b10ac897 t/checkbox_loop2.t
+SHA1 0f8991d24593018f5abfb684c67e48b000b597f5 t/eqloop.t
+SHA1 04b14ee7e0214e328ff8e4725a36b07b6c9274f3 t/file.t
+SHA1 5ee733e13de031ed5252e4899ca891ebff146354 t/filter.t
+SHA1 fbda58275cbf5a385e693c0de23f1a42d7d01e87 t/for.t
+SHA1 ed183e673a4dde143126c2076a28e87a5ae1b817 t/form.t
+SHA1 66edd00e3ae048fbfc8fd487c78693fb7d70bca9 t/form1.t
+SHA1 ef28da91ac80e327bf227a68556acd2551abc6b1 t/form2.t
+SHA1 ea99558b6e11fad18843d27050808d73e37dc694 t/form3.t
+SHA1 c8f89a547a9feaa36e799f1231ade801ddb528f5 t/form4.t
+SHA1 adfd84f43f3ae20a4d210a5f55efc135fa2756da t/id.t
+SHA1 9d1f043404f736ac1dd663a001501e9a7e5daf8b t/ids.t
+SHA1 0e8f86b189b44844da3f32742a900599c76320fc t/if.t
+SHA1 23ddf6847ec9ecbf2b5fd414db3f969de5485f55 t/if1.t
+SHA1 827208587cc6ba4bbe328dcc5a612952d7dde451 t/ifloop.t
+SHA1 10bf2c3df66b092ac755a4d66c8b9d83d771dc9a t/l1.t
+SHA1 cd4d6a8812190d462e8f7bf701fff1c6d2a597e1 t/label.t
+SHA1 76f45a14b75a366af09958510e0013473afd2a6b t/list.t
+SHA1 71f9d999ed98b1773f69ab593a529023515d38bb t/loop.t
+SHA1 23a9002c72a25aa8b6c8d133d3434720862b1f3a t/loop2.t
+SHA1 45057f4a6d7efe431f85860ac65d390572508dfa t/loop_input.t
+SHA1 467bca62807cc96afc4d12fbff8f119d4d0d358a t/mm.t
+SHA1 ef3c1393e920b0aed90d3104abb929bafda08b54 t/mm2.t
+SHA1 7a1011f33c4c9f040b1f320fdf0a54116fc22ecb t/multiloop.t
+SHA1 3ceb4a7999fcd445a9ce458068fe286d2cfba86b t/multiloop2.t
+SHA1 2cdf3f24cd804eef866d2abc09b41a9f1f79adea t/multiselect.t
+SHA1 111187617dc55262934c60686bdbd7e01574ab36 t/parse.t
+SHA1 54ba612e5559ea5f07a9927634806a7e6c3361b0 t/remove.t
+SHA1 5ceb79dd41f54904ffa205b2c239245b8a95f5f7 t/remove_tag.t
+SHA1 64e07c9d4e64dba108c132b23664ccac6be5c4be t/replace.t
+SHA1 8157a4638cfdbdee66b3126f35f62ef5df481523 t/select.t
+SHA1 0bc8f4c951cc6873510debfd5bd854b0d7716529 t/select2.t
+SHA1 75b119b6b7198ba37f0371f59cd7425861f6683a t/simple.t
+SHA1 c9014fbc9af5b1025a205e789100b4143fc00e68 t/simpleloop.t
+SHA1 077fa955d279cf1ffa5ad47bdb07dd98e9f7e7f5 t/t_if.t
+SHA1 0d2be472d7ab30ad2adecc002e2dd0ddb6d5642b t/table_columns.t
+SHA1 705e05289ef47a780bc2094e279dcc69e1eff2e3 t/template_data.t
+SHA1 c323449e2697120b2a85ade6e2a943280b2a40ce t/template_replace.t
+SHA1 89c31de912364e055984b2045310403ed572ba1d t/template_table.t
+SHA1 d29d595e2c54b6e218705763bfc142ccb74f2ad8 t/text.t
+SHA1 74253843e55108d4b5ec9ca4dad0e002872846ba t/textarea.t
+SHA1 5a7a0d49bed302037609893d22b5072fb3ba028e t/vlabel.t
+SHA1 ada24b3373150f5e68f63bb11d90d0604a1e4d7e t/x1.t
+SHA1 ff5997673fca6e1924e2b3bbe3b9468b1fd0cec7 t/xlabel.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFGlQAQliSr/X1H0FwRAjoxAKCSTsfjVGvGjr8Ao9cxgiLPUdRDDwCeL6ou
+ai7dqXpkHqnBO3Dvo4wuYwc=
+=DLDU
+-----END PGP SIGNATURE-----
