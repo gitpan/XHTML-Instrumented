@@ -4,12 +4,15 @@ use Test::More;
 
 
 eval {
-  use Test::XML;
-  use Test::XML::Order;
+  require Test::XML;
+  require Test::XML::Order;
 };
 plan skip_all => "Test::XML::Order required for testing this" if $@;
 
 plan tests => 4;
+
+Test::XML->import();
+Test::XML::Order->import();
 
 require_ok( 'XHTML::Instrumented' );
 

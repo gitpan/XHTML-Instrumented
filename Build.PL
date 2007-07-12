@@ -4,7 +4,7 @@ use Module::Build;
 
 my $builder = Module::Build->new(
     module_name   => 'XHTML::Instrumented',
-    dist_version => '0.02',
+    dist_version => '0.03',
     license       => 'perl',
     requires => {
 	'perl'		=> '5.6.0',
@@ -16,7 +16,7 @@ my $builder = Module::Build->new(
 	'Test::Warn' => 0,
     },
     recommends => {
-	'Test::XML::Order' => 0,
+	'Test::XML::Order' => '0.03',
         'Test::Pod' => 0,
     },
     sign           => 1,
