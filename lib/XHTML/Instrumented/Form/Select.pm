@@ -201,7 +201,7 @@ __END__
 
 =head1 NAME
 
-Data::Tabular::Form::Hidden - An Option Form Element
+XHTML::Instrumented::Form::Select - Object to hold select options.
 
 =head1 SYNOPSIS
 
@@ -223,11 +223,17 @@ to hold information about the Options available.
 =over
 
 =item name
+
 =item set_select_data
+
 =item set_default
+
 =item options
+
 =item elements
+
 =item values
+
 =item type
 
 =item exp_args
@@ -235,6 +241,7 @@ to hold information about the Options available.
 =item expand_content
 
 =item set_value
+
 =item value
 
 =back

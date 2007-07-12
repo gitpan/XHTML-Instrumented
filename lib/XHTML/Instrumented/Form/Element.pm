@@ -142,14 +142,13 @@ __END__
 
 =head1 NAME
 
-Data::Tabular::Form::Hidden - An Option Form Element
+XHTML::Instrumented::Form::Element - Basic form element
 
 =head1 SYNOPSIS
 
 =head1 API
 
-This normally used by the Form::Select and Form::Checkbox objects
-to hold information about the Options available.
+use internally
 
 =head2 Constructor
 
@@ -164,13 +163,21 @@ to hold information about the Options available.
 =over
 
 =item exp_args
+
 =item add_option
+
 =item set_default
+
 =item value
+
 =item type
+
 =item name
+
 =item args
+
 =item expand_content
+
 =item to_text
 
 =back

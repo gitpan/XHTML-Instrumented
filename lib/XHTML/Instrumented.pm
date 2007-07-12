@@ -9,7 +9,7 @@ use XHTML::Instrumented::Context;
 use Carp qw (croak verbose);
 use XML::Parser;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our @CARP_NOT = ( 'XML::Parser::Expat' );
 

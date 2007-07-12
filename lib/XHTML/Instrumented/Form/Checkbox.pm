@@ -175,7 +175,7 @@ __END__
 
 =head1 NAME
 
-Data::Tabular::Form::Hidden - An Option Form Element
+XHTML::Instrumented::Form::Checkbox - XHTML::Instramented::Form checkbox object
 
 =head1 SYNOPSIS
 

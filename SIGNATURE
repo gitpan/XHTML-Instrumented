@@ -14,27 +14,27 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 96874c9eb800054ab87b18175130aeef29cdb550 Build.PL
+SHA1 c9ccede09f50c50a30497ef07a1ce4d4fc83c74e Build.PL
 SHA1 12948fab3acac0567ecf37a30b324e76f4adba95 MANIFEST
-SHA1 ee28dbc152d9e4751821c74f326dc270044fc12e META.yml
+SHA1 531e2fca60152641d7011d4399fb65aefd8ed845 META.yml
 SHA1 b3aa4916c2682439a79c9fada66e0689b32ad7dd Makefile.PL
 SHA1 ba6a52c634024e7473ec9d01cffe6400c4850d0c README
 SHA1 4e647b5d4922690a9ae9e9fddfea8a0061d71879 examples/checkbox.cgi
 SHA1 3f1c5cf536bb44e621203e757429454d88c91433 examples/index.cgi
 SHA1 b5a6b310fbad72f09d436aac5288104fc8e351b1 examples/multi.cgi
 SHA1 fc1083b9e8841c31ce0d0c704b5815dab5433b76 examples/test.html
-SHA1 a3162b07387f89cafaa64c8430dee11294262ed7 lib/XHTML/Instrumented.pm
+SHA1 c76dea4b9e98f9c0a917d6e1c584d44215de7766 lib/XHTML/Instrumented.pm
 SHA1 04fbb3cc90fc64ecb810ad17ef68648910be946d lib/XHTML/Instrumented/Context.pm
 SHA1 4266d6caf0c1f4ddcfb7092f1ce7def87da4acf6 lib/XHTML/Instrumented/Control.pm
 SHA1 6b45717b12f9eeb1d45a173839a9170bd15c3ad1 lib/XHTML/Instrumented/Entry.pm
-SHA1 29356a87267b95caed82ee99dfb7e5c977aa9591 lib/XHTML/Instrumented/Form.pm
-SHA1 616f6b63cd05c335dcd2049917698a4af4d75add lib/XHTML/Instrumented/Form/Checkbox.pm
+SHA1 751c4bbe386a796984ecfd9106d226de1ba9e572 lib/XHTML/Instrumented/Form.pm
+SHA1 cea0bfa1e4682c7b3c9528b08f1e895d9c13c582 lib/XHTML/Instrumented/Form/Checkbox.pm
 SHA1 541e586ba29abb5c9ecc8448a27adb15a3662a0e lib/XHTML/Instrumented/Form/Control.pm
-SHA1 4008c176622b51d835a2a5d5da7ba4671b2ad4f1 lib/XHTML/Instrumented/Form/Element.pm
-SHA1 a8a0e6f3ae1868336e1765826702a782c3664179 lib/XHTML/Instrumented/Form/ElementControl.pm
+SHA1 3033bf7c2cf07bce5456f447790ace75717a6f28 lib/XHTML/Instrumented/Form/Element.pm
+SHA1 710306b7bebaee99cd0edca77c63c3f06a4f0859 lib/XHTML/Instrumented/Form/ElementControl.pm
 SHA1 f6fe655a43fae4ab4036761c4545c3f2f0e61d33 lib/XHTML/Instrumented/Form/Hidden.pm
 SHA1 62567e6b62d6196a61e6829c9fae14705e092384 lib/XHTML/Instrumented/Form/Option.pm
-SHA1 c9243438bfeb7555820a32d1e44d52927fa7aa3d lib/XHTML/Instrumented/Form/Select.pm
+SHA1 46695e6bc395ccc24a8920ef85f8772a72b2daad lib/XHTML/Instrumented/Form/Select.pm
 SHA1 84746c6c6fecad838e348fb70e44fd2c767870b4 lib/XHTML/Instrumented/Loop.pm
 SHA1 f3556a296dd97839c2629f01979097245c777777 save
 SHA1 1e81bebc1e41c7dcd1e1f6dca5055ac025b1794e t/args.t
@@ -87,7 +87,7 @@ SHA1 ff5997673fca6e1924e2b3bbe3b9468b1fd0cec7 t/xlabel.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.6 (GNU/Linux)
 
-iD8DBQFGlQzlliSr/X1H0FwRAjARAKDygjVBlY+bSuyN9Bzzj4MukIGWdgCfTPmy
-QG0csZULDxROrCdC5858bmY=
-=6oyb
+iD8DBQFGlgraliSr/X1H0FwRApQTAJ0THsQEopCEq6cxtlAEyuqf1Y2hTQCfbAJJ
+WZQeMWPWEWtOOYVcxU9fKx4=
+=D8FY
 -----END PGP SIGNATURE-----
