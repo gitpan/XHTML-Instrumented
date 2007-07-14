@@ -58,6 +58,8 @@ This holds information on a hidden form element.
 
 =item is_multi
 
+Returns true, as hidden elements can have multiple values.
+
 =item set_value
 
 =item value

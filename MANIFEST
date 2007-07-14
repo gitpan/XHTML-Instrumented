@@ -25,6 +25,7 @@ t/args.t
 t/checkbox.t
 t/checkbox_loop.t
 t/checkbox_loop2.t
+t/coverage.t
 t/eqloop.t
 t/file.t
 t/filter.t
@@ -51,6 +52,7 @@ t/multiloop.t
 t/multiloop2.t
 t/multiselect.t
 t/parse.t
+t/pod.t
 t/remove.t
 t/remove_tag.t
 t/replace.t
