@@ -4,7 +4,7 @@ use Module::Build;
 
 my $builder = Module::Build->new(
     module_name   => 'XHTML::Instrumented',
-    dist_version => '0.04',
+    dist_version => '0.05',
     license       => 'perl',
     requires => {
 	'perl'		=> '5.6.0',

@@ -1,0 +1,10 @@
+
+0.05 Wed Jul 18 15:39:26 EDT 2007
+        - Added the Changes file to MANIFEST file
+
+0.04 Fri Jul 13 08:30:46 EDT 2006
+        - Added pod tests and this Changes file.
+
+0.03 Wed Jul 11 18:44:46 EDT 2006
+        - Made Test::XML::Order test optional
+

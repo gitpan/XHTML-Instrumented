@@ -2,7 +2,7 @@ use strict;
 
 package XHTML::Instrumented::Form;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use XHTML::Instrumented::Form::Control;
 use XHTML::Instrumented::Form::Select;

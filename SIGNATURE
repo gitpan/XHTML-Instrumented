@@ -14,20 +14,21 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 2a234cb95f4a82694347807876eb859aed2d2c9c Build.PL
-SHA1 d9aa5d4db7d38b0ddc772bd54786dc12073f4965 MANIFEST
-SHA1 09069de4b827a4fe02f839f70855094f309465c3 META.yml
+SHA1 70b74b821abc63e99a2838213303df4483852124 Build.PL
+SHA1 c7bcbcf049e67d91f659ec95966125e1db0dd351 Changes
+SHA1 18f4d79edfbc77ac0e735dbf59bc8f443f7f81e6 MANIFEST
+SHA1 7c9273312b8926f900ab80b3e9549be3bda48492 META.yml
 SHA1 b3aa4916c2682439a79c9fada66e0689b32ad7dd Makefile.PL
 SHA1 ba6a52c634024e7473ec9d01cffe6400c4850d0c README
 SHA1 4e647b5d4922690a9ae9e9fddfea8a0061d71879 examples/checkbox.cgi
 SHA1 3f1c5cf536bb44e621203e757429454d88c91433 examples/index.cgi
 SHA1 b5a6b310fbad72f09d436aac5288104fc8e351b1 examples/multi.cgi
 SHA1 fc1083b9e8841c31ce0d0c704b5815dab5433b76 examples/test.html
-SHA1 1ed13e57df4be4e0d934477ad35c9dfb609ca93d lib/XHTML/Instrumented.pm
+SHA1 23502311f57c8a5be3674292d18ea57e49cc7f69 lib/XHTML/Instrumented.pm
 SHA1 04fbb3cc90fc64ecb810ad17ef68648910be946d lib/XHTML/Instrumented/Context.pm
 SHA1 4266d6caf0c1f4ddcfb7092f1ce7def87da4acf6 lib/XHTML/Instrumented/Control.pm
 SHA1 6b45717b12f9eeb1d45a173839a9170bd15c3ad1 lib/XHTML/Instrumented/Entry.pm
-SHA1 2978a23a1eef92d2fcf515ef713972a7fa92ce21 lib/XHTML/Instrumented/Form.pm
+SHA1 b58159582237643184493f7dcd97a1d25146007a lib/XHTML/Instrumented/Form.pm
 SHA1 cea0bfa1e4682c7b3c9528b08f1e895d9c13c582 lib/XHTML/Instrumented/Form/Checkbox.pm
 SHA1 541e586ba29abb5c9ecc8448a27adb15a3662a0e lib/XHTML/Instrumented/Form/Control.pm
 SHA1 3033bf7c2cf07bce5456f447790ace75717a6f28 lib/XHTML/Instrumented/Form/Element.pm
@@ -89,7 +90,7 @@ SHA1 ff5997673fca6e1924e2b3bbe3b9468b1fd0cec7 t/xlabel.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.6 (GNU/Linux)
 
-iD8DBQFGmDbSliSr/X1H0FwRAlAgAJ9W+ma5H/E1ROtV/oE//7R1mwMoQgCfT6Ki
-ZDLSW7LUE3Dhiz6ZLMqCLTU=
-=iLWz
+iD8DBQFGnm+aliSr/X1H0FwRAgKFAJwJspoyL+XfWE6KqAAmMU54RkglqwCdEh8r
+v2KO9Bb3Qv0d4APAwL+CP8Y=
+=RxJS
 -----END PGP SIGNATURE-----
