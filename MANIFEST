@@ -1,7 +1,10 @@
 Build.PL
+Changes
 examples/checkbox.cgi
 examples/index.cgi
 examples/multi.cgi
+examples/README
+examples/test.cgi
 examples/test.html
 lib/XHTML/Instrumented.pm
 lib/XHTML/Instrumented/Context.pm
@@ -20,7 +23,6 @@ Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
-Changes
 save
 t/args.t
 t/cdata.t
@@ -53,6 +55,8 @@ t/multiloop.t
 t/multiloop2.t
 t/multiselect.t
 t/parse.t
+t/pod.t
+t/pod_coverage.t
 t/remove.t
 t/remove_tag.t
 t/replace.t
@@ -70,5 +74,4 @@ t/textarea.t
 t/vlabel.t
 t/x1.t
 t/xlabel.t
-t/pod.t
 SIGNATURE    Added here by Module::Build

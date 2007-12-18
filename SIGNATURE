@@ -16,15 +16,17 @@ Hash: SHA1
 
 SHA1 a1af5d7a49829c2cc9fa1e29dfb6310176c915df Build.PL
 SHA1 cfff473de12c241d8cd4b36d8ecf6bbba1426c0d Changes
-SHA1 34b92a68b17a070211b3fdd5adb4a9925dc3d128 MANIFEST
-SHA1 fdcd012f4182764bf41ddbaba205a4c4289e7d51 META.yml
+SHA1 4b762a6f26c982979fc184e10ad744d869ab58f3 MANIFEST
+SHA1 02e37ea9d03b45ab5a7705e2d96a6686bbcbde30 META.yml
 SHA1 d965653e06dcde85e8ce8b18f2de26c64613a961 Makefile.PL
-SHA1 b1fd20a2e20089d8f8a5f74a73dab2354fcda328 README
+SHA1 b56ed9902598da33f7d2e5fec710947bb959b31f README
+SHA1 6f99f9639443947ccedc5a71d94511994afc03a3 examples/README
 SHA1 4e647b5d4922690a9ae9e9fddfea8a0061d71879 examples/checkbox.cgi
-SHA1 3f1c5cf536bb44e621203e757429454d88c91433 examples/index.cgi
+SHA1 e29e8e90764797d76144bb4ba82d4b5a9d27c4be examples/index.cgi
 SHA1 b5a6b310fbad72f09d436aac5288104fc8e351b1 examples/multi.cgi
+SHA1 4ffcda65e89fa8eb9f9e466c0a328ec5420f1bfc examples/test.cgi
 SHA1 fc1083b9e8841c31ce0d0c704b5815dab5433b76 examples/test.html
-SHA1 e4984583b0983c2b567194d08533ec6111a7b9e9 lib/XHTML/Instrumented.pm
+SHA1 d179344b62bdcbcf805ca35b6cad30ea3b56f397 lib/XHTML/Instrumented.pm
 SHA1 04fbb3cc90fc64ecb810ad17ef68648910be946d lib/XHTML/Instrumented/Context.pm
 SHA1 4266d6caf0c1f4ddcfb7092f1ce7def87da4acf6 lib/XHTML/Instrumented/Control.pm
 SHA1 6b45717b12f9eeb1d45a173839a9170bd15c3ad1 lib/XHTML/Instrumented/Entry.pm
@@ -69,7 +71,8 @@ SHA1 7a1011f33c4c9f040b1f320fdf0a54116fc22ecb t/multiloop.t
 SHA1 3ceb4a7999fcd445a9ce458068fe286d2cfba86b t/multiloop2.t
 SHA1 2cdf3f24cd804eef866d2abc09b41a9f1f79adea t/multiselect.t
 SHA1 111187617dc55262934c60686bdbd7e01574ab36 t/parse.t
-SHA1 429919b4d9a931ec4ccfbabae40e8b9817974b60 t/pod.t
+SHA1 61c6866c1d829a71236ded72a12b1f6d512ecef3 t/pod.t
+SHA1 8e5444d49f62a0d7fa717aaff4e7fc0d944a78d4 t/pod_coverage.t
 SHA1 54ba612e5559ea5f07a9927634806a7e6c3361b0 t/remove.t
 SHA1 5ceb79dd41f54904ffa205b2c239245b8a95f5f7 t/remove_tag.t
 SHA1 64e07c9d4e64dba108c132b23664ccac6be5c4be t/replace.t
@@ -90,8 +93,8 @@ SHA1 ff5997673fca6e1924e2b3bbe3b9468b1fd0cec7 t/xlabel.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.6 (GNU/Linux)
 
-iGcEARECACcFAkdnFLsgGmh0dHA6Ly93d3cuZ2FtMy5uZXQvcG9saWN5Lmh0bWwA
-CgkQliSr/X1H0FxUiwCgkmZ9e84vbIp8QRgrumU8a1kKkPYAoKx8yl5HArwkfktz
-ZbCz7U7h7VWQ
-=bC5x
+iGcEARECACcFAkdn9BwgGmh0dHA6Ly93d3cuZ2FtMy5uZXQvcG9saWN5Lmh0bWwA
+CgkQliSr/X1H0Fw/NACgtWu+7wQQ5W1HKuQZ6Z49LaqfvUoAnieUKzAc1eke5aYw
+cG8JqF/AW1Hk
+=9CT8
 -----END PGP SIGNATURE-----
