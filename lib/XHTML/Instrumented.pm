@@ -9,50 +9,67 @@ use XHTML::Instrumented::Context;
 use Carp qw (croak verbose);
 use XML::Parser;
 
-our $VERSION = '0.05';
+=head1 NAME
+
+XHTML::Instrumented - packages to control XHTML
+
+=head1 VERSION
+
+Version 0.06
+
+=cut
+
+our $VERSION = '0.06';
 
 our @CARP_NOT = ( 'XML::Parser::Expat' );
 
 use Params::Validate qw( validate SCALAR SCALARREF BOOLEAN HASHREF OBJECT UNDEF CODEREF );
 
 our $path = '.';
-our $outpath = '/tmp/xhtmli/';
+our $cachepath;
 
 sub path
 {
-    $path;
+    my $self = shift;
+
+    $self->{path} || $path;
 }
 
-sub outpath
-{
-    $outpath;
-}
-
-sub outfile
+sub cachepath
 {
     my $self = shift;
-    my $file = $self->outpath;
 
-    if ($self->{type}) {
-	$file .= '/' . $self->{type};
+    $self->{cachepath} || $cachepath || $self->path;
+}
+
+sub cachefile
+{
+    my $self = shift;
+    my $file = $self->cachepath;
+
+    if ($self->{type} || $self->{default_type}) {
+	$file .= '/' . $self->{type} || $self->{default_type} if $self->{type} || $self->{default_type};
 	$file .= '/' . $self->{name};
 	$file .= '.cxi';
+    } elsif ($self->{name}) {
+        $file .= '/' . $self->{name} . '.cxi';
     } else {
         $file = $self->{filename} . '.cxi';
     }
+
     return $file;
 }
 
 sub import
 {
     my $class = shift;
+    my %p = validate(@_, {
+       path => 0,
+       cachepath => 0,
+    });
 
-    my $tag = shift;
-    if (defined $tag && $tag eq 'path') {
-        $path = shift;
-    } else {
-        die "Unknow key: " . $tag if $tag;
-    }
+    $path = $p{path};
+    $cachepath = $p{cachepath};
 }
 
 sub new
@@ -83,6 +100,14 @@ sub new
 	    optional => 1,
 	    type => SCALAR,
 	},
+        'cachepath' => {
+	    optional => 1,
+	    type => SCALAR,
+	},
+        'path' => {
+	    optional => 1,
+	    type => SCALAR,
+	},
     })}, $class;
 
     my $path = $self->path();
@@ -97,16 +122,20 @@ sub new
 	unless (-f "$filename.html") {
 	    $filename = $self->{filename} = "$path/$type/$name";
 	}
+	unless (-f "$filename.html") {
+	    $filename = $self->{filename} = "$path/$name";
+	}
     }
 
     if ($filename) {
-	my $outfile = $self->outfile;
-	my @path = split('/', $outfile);
+	my $cachefile = $self->cachefile;
+
+	my @path = split('/', $cachefile);
 	pop @path;
 
-        if (-r $outfile and ( -M $outfile < -M  $filename . '.html')) {
+        if (-r $cachefile and ( -M $cachefile < -M  $filename . '.html')) {
             require Storable;
-	    $self->{parsed} = Storable::retrieve($outfile);
+	    $self->{parsed} = Storable::retrieve($cachefile);
 	} elsif ( -r $filename . '.html') {
 	    $self->{parsed} = $self->parse(
 		$filename . '.html',
@@ -114,16 +143,18 @@ sub new
 		type => $self->{type},
 		default_type => $self->{default_type},
 		replace_name => $self->{replace_name} || 'home',
+		path => $self->path,
+		cachepath => $self->cachepath,
 	    );
 	    my $path = '';
 	    while (@path) {
 	       $path .= shift(@path) . '/';
 	       unless ( -d $path ) {
-		   mkdir $path or die 'Bad path ' . $path .  " $outfile @path";
+		   mkdir $path or die 'Bad path ' . $path .  " $cachefile @path";
 	       }
 	    }
 	    require Storable;
-	    Storable::store($self->{parsed}, $outfile );
+	    Storable::store($self->{parsed}, $cachefile );
 	} else {
 	    die "File not found: $filename";
 	}
@@ -188,7 +219,7 @@ sub args
 our @unused;
 
 # the main function
-sub _filename
+sub __filename
 {
     my $self = shift;
     my ($path, $type, $name);
@@ -218,6 +249,8 @@ sub parse
 			 'Element' => \&_ah,
 			 'Default' => \&_ex,
 			 'Unparsed' => \&_cm,
+			 'CdataStart' => \&_cds,
+			 'CdataEnd' => \&_cde,
 			);
     $parser->{_OFF_} = 0;
     $parser->{__filter__} = $self->{filter};
@@ -277,6 +310,16 @@ sub _get_tag
 	return $data if $data;
     }
     undef;
+}
+
+sub get_tag
+{
+    my $self = shift;
+    my $tag = shift;
+
+    my $data = _get_tag($tag, $self->{parsed}{data});
+
+    return $data;
 }
 
 sub instrument
@@ -350,6 +393,16 @@ sub _ex
 sub _cm
 {
     die "Don't know how to handle Unparsed Data";
+}
+
+sub _cds
+{
+
+}
+
+sub _cde
+{
+
 }
 
 sub _sh
@@ -466,22 +519,21 @@ sub _eh
 
 	die if $file;
 
-use Data::Dumper;
-warn Dumper $self->{__args__};
-
 	if ($self->{__args__}{name} ne 'home') {
 	    $out = XHTML::Instrumented->new(
+	       path  => $self->{path},
+	       cachepath => $self->{cachepath},
 	       %{$gargs},
 	       name => 'home',
 	    );
 	} else {
 	}
 
-if ($out) {
-    my $id = $args->{id};
-warn "replaced: $id";
-    $current = $out->{parsed}{idr}{$id};
-}
+	if ($out) {
+	    my $id = $args->{id};
+
+	    $current = $out->{parsed}{idr}{$id};
+	}
     }
 
     $parent->append($current);
@@ -549,10 +601,6 @@ sub _ch
 
 1;
 __END__
-
-=head1 NAME
-
-XHTML::Instrumented - packages to control XHTML
 
 =head1 DESCRIPTION
 
@@ -627,13 +675,17 @@ same as replace(args => { @_ });
 
 Get the default path to the templates
 
-=item outpath
+=item cachepath
 
 Get the default path to the compiled templates
 
-=item outfile
+=item cachefile
 
 Get the full path and filename of the compiled template.
+
+=item get_tag('tag')
+
+Return a list of XHTML::Intramented::Entry objects that have type 'tag';
 
 =back
 

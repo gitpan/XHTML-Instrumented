@@ -1,4 +1,5 @@
 use strict;
+use warnings;
 
 package
     XHTML::Instrumented::Form::Element;
@@ -17,6 +18,7 @@ sub new
 	type => 1,
 	value => 0,
 	required => 0,
+	optional => 0,
 	default => 0,
 	remove => 0,
     });
@@ -104,7 +106,6 @@ sub args
 	   $ret{checked} = 'checked';
        }
    } elsif ($self->type eq 'checkboxes') {
-warn $self->type;
    } elsif ($self->type eq 'submit') {
    } else {
        die "unknown type [" . $self->type . "]";
@@ -134,6 +135,18 @@ die $p{tag} if $p{tag} eq 'form';
     my @ret = $self->SUPER::to_text(@_);
 
     @ret;
+}
+
+sub optional
+{
+    my $self = shift;
+    $self->{optional} || 0;
+}
+
+sub required
+{
+    my $self = shift;
+    $self->{required} || 0;
 }
 
 1;
@@ -179,6 +192,14 @@ use internally
 =item expand_content
 
 =item to_text
+
+=item optional
+
+suppress some warning messages
+
+=item required
+
+Element must be defined or an exception is thrown.
 
 =back
 

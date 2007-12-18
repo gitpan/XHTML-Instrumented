@@ -28,7 +28,7 @@ $cmp = <<DATA;
   <input name="test_1" id="asdf.1" value="testme"/>
  </form>
  <form name="myform" method="post">
-  <label for="asdf.2">label</label>
+  <label for="asdf.2" style="color: red;">label</label>
   <input name="test_2" id="asdf.2" value="checkme"/>
  </form>
 </div>

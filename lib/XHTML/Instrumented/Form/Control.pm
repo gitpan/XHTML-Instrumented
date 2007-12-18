@@ -1,7 +1,7 @@
 use strict;
+use warnings;
 
-package
-    XHTML::Instrumented::Form::Control;
+package XHTML::Instrumented::Form::Control;
 
 use base 'XHTML::Instrumented::Control';
 
@@ -24,7 +24,8 @@ sub expand_content
     my @ret = @_;
 
     for my $hidden ($self->{self}->auto()) {
-	warn 'need value for ' . $hidden->name unless $hidden->value;
+	die 'need value for ' . $hidden->name if !$hidden->value && $hidden->required;
+	warn 'need value for ' . $hidden->name unless $hidden->value || $hidden->optional;
 	next unless $hidden->value;
 	unshift(@ret, sprintf(qq(<input name="%s" type="hidden" value="%s"/>), $hidden->name, $hidden->value));
     }
@@ -62,3 +63,44 @@ sub get_element
 
 1;
 __END__
+=head1 NAME
+
+XHTML::Instramented::Form::Control - XHTML::Instramented::Form Control Object
+
+=head1 SYNOPSIS
+
+my $template = XHTML::Instrumented->new(name => 'bob');
+
+my $form = $template->get_form(name => 'myform');
+
+=head1 API
+
+=head2 Constructor
+
+=over
+
+=item new
+
+=back
+
+=head2 Methods
+
+=over
+
+=item args
+=item expand_content
+=item form
+=item get_element
+=item is_form
+
+=back
+
+=head2 Functions
+
+This object has no functions
+
+=head1 AUTHOR
+
+"G. Allen Morris III" <gam3@gam3.net>
+
+=cut

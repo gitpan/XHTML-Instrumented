@@ -1,4 +1,5 @@
 use strict;
+use warnings;
 
 package 
     XHTML::Instrumented::Form::Select;
@@ -61,7 +62,8 @@ sub set_select_data
 	unless (defined $option->{text}) {
 	    $option->{text} = $option->{value};
 	}
-	croak 'set_select_data' unless defined $option->{text};
+use Data::Dumper;
+	croak Dumper([@_]) .  'set_select_data' unless defined $option->{text};
 	push(@new, bless $option,'XHTML::Instrumented::Form::Option');
     }
     $self->{data} = \@new;

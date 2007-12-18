@@ -1,4 +1,5 @@
 use strict;
+use warnings;
 
 package XHTML::Instrumented::Form;
 
@@ -110,6 +111,21 @@ sub set_select_data
     $select->set_select_data(@{$p{data}});
 }
 
+sub delete_element
+{
+    my $self = shift;
+    my %p = validate(@_, 
+        {
+	    name => 1,
+	}
+    );
+    my $name = $p{name} or die 'No name for element';
+    my $ret = $self->{elements}->{$name};
+    delete $self->{elements}->{$name};
+
+    return $ret;
+}
+
 sub add_element
 {
     my $self = shift;
@@ -118,6 +134,7 @@ sub add_element
 	    name => 1,
 	    type => 1,
 	    required => 0,
+	    optional => 0,
 	    default => 0,
 	    value => 0,
 	    data => 0,
@@ -305,8 +322,6 @@ my $form = $template->get_form(name => 'myform');
 
 =over
 
-=item new
-
 =item add_params
 
 =item add_defaults
@@ -315,11 +330,11 @@ my $form = $template->get_form(name => 'myform');
 
 =item element_value
 
-=item _control
-
 =item set_select_data
 
 =item add_element
+
+=item delete_element
 
 =item set_element
 

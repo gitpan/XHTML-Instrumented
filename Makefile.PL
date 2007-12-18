@@ -8,6 +8,7 @@ WriteMakefile
                            'Params::Validate' => '0',
                            'Test::Warn' => '0',
                            'Test::XML' => '0',
+                           'Test::XML::Order' => '0.03',
                            'XML::Parser' => '0'
                          },
           'INSTALLDIRS' => 'site',

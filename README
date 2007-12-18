@@ -1,6 +1,9 @@
 NAME
     XHTML::Instrumented - packages to control XHTML
 
+VERSION
+    Version 0.06
+
 DESCRIPTION
     This package takes valid XHTML as input and outputs valid XHTML that may
     be changed in several ways.
@@ -24,7 +27,7 @@ API
 
   Methods
     output
-        This returns the modified html.
+        This returns the modified xhtml.
 
     get_form
         This returns a form object.
@@ -45,11 +48,15 @@ API
     path
         Get the default path to the templates
 
-    outpath
+    cachepath
         Get the default path to the compiled templates
 
-    outfile
+    cachefile
         Get the full path and filename of the compiled template.
+
+    get_tag('tag')
+        Return a list of XHTML::Intramented::Entry objects that have type
+        'tag';
 
 AUTHOR
     "G. Allen Morris III" <gam3@gam3.net>

@@ -1,3 +1,8 @@
+0.06 Mon Dec 17 19:26:23 EST 2007
+        - changed outpath and outfile to cachepath and cachefile
+        - Clean up of path and cachpath simantics
+        - removed pod.t and coverage.t. I now use the
+          Module::Builder commands
 
 0.05 Wed Jul 18 15:39:26 EDT 2007
         - Added the Changes file to MANIFEST file
@@ -7,4 +12,3 @@
 
 0.03 Wed Jul 11 18:44:46 EDT 2006
         - Made Test::XML::Order test optional
-

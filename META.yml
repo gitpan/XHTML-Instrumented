@@ -1,6 +1,6 @@
 ---
 name: XHTML-Instrumented
-version: 0.05
+version: 0.06
 author:
   - '"G. Allen Morris III" <gam3@gam3.net>'
 abstract: packages to control XHTML
@@ -14,16 +14,16 @@ requires:
 build_requires:
   Test::Warn: 0
   Test::XML: 0
-recommends:
-  Test::Pod: 0
   Test::XML::Order: 0.03
 provides:
   XHTML::Instrumented:
     file: lib/XHTML/Instrumented.pm
-    version: 0.05
+    version: 0.06
   XHTML::Instrumented::Form:
     file: lib/XHTML/Instrumented/Form.pm
     version: 0.05
+  XHTML::Instrumented::Form::Control:
+    file: lib/XHTML/Instrumented/Form/Control.pm
 generated_by: Module::Build version 0.2807
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

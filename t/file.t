@@ -1,15 +1,18 @@
 use Test::More;
 use Test::XML;
 
-plan tests => 6;
+plan tests => 7;
 
-require_ok( 'XHTML::Instrumented' );
+use_ok( 'XHTML::Instrumented' );
 
-my $x = XHTML::Instrumented->new(
-    filename => 'examples/test'
+$x = XHTML::Instrumented->new(
+    name => 'test',
+    path => 'examples',
+    cachepath => '/tmp/test1',
 );
 
-is($x->path(), '.', 'path');
+is($x->path(), 'examples', 'path');
+is($x->cachepath(), '/tmp/test1', 'cachepath');
 
 my $output = $x->instrument(
     content_tag => 'body',
@@ -24,13 +27,13 @@ DATA
 
 is_xml($output, $cmp, 'test');
 
-my $outfile = $x->outfile;
+my $cachefile = $x->cachefile;
 
-ok(-r $outfile, 'file created');
+ok(-r $cachefile, 'file created');
 
 my $y = XHTML::Instrumented->new(
-    filename => 'examples/test',
-#    outfile => 'examples/test.cxi',
+    name => 'test',
+    path => 'examples',
 );
 
 $output = $y->instrument(
