@@ -2,7 +2,7 @@ NAME
     XHTML::Instrumented - packages to control XHTML
 
 VERSION
-    Version 0.091
+    Version 0.092
 
 DESCRIPTION
     This package takes valid XHTML as input and outputs valid XHTML that may

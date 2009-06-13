@@ -15,11 +15,11 @@ XHTML::Instrumented - packages to control XHTML
 
 =head1 VERSION
 
-Version 0.091
+Version 0.092
 
 =cut
 
-our $VERSION = '0.091';
+our $VERSION = '0.092';
 
 our @CARP_NOT = ( 'XML::Parser::Expat' );
 
