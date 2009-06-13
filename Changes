@@ -1,4 +1,7 @@
-0.09 Sun, 04 May 2008 19:03:25 -0400
+0.091 Sat, 13 Jun 2009 08:38:25 -0400
+	- removed libhtml line for Build.PL
+
+0.09 Sat, 13 Jun 2009 08:15:08 -0400
         - added test for :replace class
 	- use nstore in place of store
 	- cachefile() is now cachefilename()
