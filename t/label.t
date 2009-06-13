@@ -8,8 +8,6 @@ plan tests => 3;
 require_ok( 'XHTML::Instrumented' );
 require_ok( 'XHTML::Instrumented::Form' );
 
-$ENV{HVNRTMPL} = './templates';
-
 my ($output, $cmp);
 
 my $data = <<DATA;

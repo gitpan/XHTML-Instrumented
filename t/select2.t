@@ -3,11 +3,9 @@ use Test::XML;
 
 use Data::Dumper;
 
-plan tests => 6;
+plan tests => 7;
 
 require_ok( 'XHTML::Instrumented' );
-
-$ENV{HVNRTMPL} = './templates';
 
 my $data = <<DATA;
 <div>
@@ -49,9 +47,12 @@ DATA
 my $select = $form->get_element('select');
 
 for my $option ($select->options) {
-   if ($option->selected) {
-       is($option->text, 'B', 'option');
-   }
+    if ($option->selected) {
+        is($option->text, 'B', 'selected option');
+    }
+    if ($option->disabled) {
+        is($option->text, 'A', 'disabled option');
+    }
 }
 
 is(scalar grep({ $_->selected } $select->options), 1, 'option count');

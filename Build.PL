@@ -18,6 +18,7 @@ my $builder = Module::Build->new(
     sign           => 1,
     create_makefile_pl => 'traditional',
     create_readme => 1,
+    install_path => { libhtml => '/var/www/perl_doc' }
 );
 
 $builder->create_build_script;

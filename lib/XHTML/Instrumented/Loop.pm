@@ -177,6 +177,7 @@ sub to_text
             $self->{inclusive} = $s;
 	} else {
             my $x = $context->copy(loop => $self);
+
 	    push @ret, $self->SUPER::to_text(%p, context => $x);
 	}
     }

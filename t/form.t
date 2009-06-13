@@ -3,12 +3,10 @@ use Test::XML;
 
 use Data::Dumper;
 
-plan tests => 6;
+plan tests => 8;
 
 require_ok( 'XHTML::Instrumented' );
 require_ok( 'XHTML::Instrumented::Form' );
-
-$ENV{HVNRTMPL} = './templates';
 
 my ($output, $cmp);
 
@@ -26,6 +24,54 @@ my $data = <<DATA;
 </div>
 DATA
 
+my $x = XHTML::Instrumented->new(name => \$data, type => '');
+
+my $form = XHTML::Instrumented::Form->new( name => 'myform');
+
+$form->add_element(
+    type => 'select',
+    name => 'select',
+    data => [ 
+	{ text => 'A', disabled => 1 },
+	{ text => 'B', selected => 1 },
+	{ text => 'C' }
+    ],
+);
+$form->add_element(type => 'textarea', name => 'textarea', value => 'test' );
+$form->add_element(type => 'hidden', name => 'a', value => 'a' );
+$form->add_element(type => 'hidden', name => 'zz', value => 'zz' );
+
+is($form->name, 'myform', 'name');
+
+$output = $x->output(
+     myform => $form,
+);
+
+$cmp = <<DATA;
+<div>
+  <form name="myform" method="post">
+    <input name="zz" type="hidden" value="zz"/>
+    <input name="a" type="hidden" value="a"/>
+    <textarea name="textarea">
+test
+    </textarea>
+    <select name="select">
+      <option disabled="disabled" value="A">A</option>
+      <option selected="selected" value="B">B</option>
+      <option value="C">C</option>
+    </select>
+  </form>
+</div>
+DATA
+
+is_xml($output, $cmp, 'select');
+
+$form->delete_element(name => 'zz');
+
+$output = $x->output(
+     myform => $form,
+);
+
 $cmp = <<DATA;
 <div>
   <form name="myform" method="post">
@@ -42,28 +88,7 @@ test
 </div>
 DATA
 
-my $x = XHTML::Instrumented->new(name => \$data, type => '');
-
-my $form = XHTML::Instrumented::Form->new();
-
-$form->add_element(
-    type => 'select',
-    name => 'select',
-    data => [ 
-	{ text => 'A', disabled => 1 },
-	{ text => 'B', selected => 1 },
-	{ text => 'C' }
-    ],
-);
-$form->add_element(type => 'textarea', name => 'textarea', value => 'test' );
-$form->add_element(type => 'hidden', name => 'a', value => 'a' );
-
-$output = $x->output(
-     myform => $form,
-);
-
 is_xml($output, $cmp, 'select');
-
 
 $data = <<DATA;
 <div>

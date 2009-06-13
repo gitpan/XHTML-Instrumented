@@ -7,8 +7,6 @@ plan tests => 3;
 
 require_ok( 'XHTML::Instrumented' );
 
-$ENV{HVNRTMPL} = `pwd` . '/../templates/';
-
 my $data = <<DATA;
 <div>
  <span id="one">one</span>

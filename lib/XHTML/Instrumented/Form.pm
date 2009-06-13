@@ -3,7 +3,7 @@ use warnings;
 
 package XHTML::Instrumented::Form;
 
-our $VERSION = '0.05';
+our $VERSION = '0.09';
 
 use XHTML::Instrumented::Form::Control;
 use XHTML::Instrumented::Form::Select;
@@ -11,6 +11,28 @@ use XHTML::Instrumented::Form::Select;
 use Params::Validate qw( validate SCALAR BOOLEAN HASHREF OBJECT ARRAYREF );
 
 use Carp qw (croak carp);
+
+=head1 NAME
+
+XHTML::Instramented::Form - XHTML::Instramented Form Object
+
+=head1 SYNOPSIS
+
+my $template = XHTML::Instrumented->new(name => 'bob');
+
+my $form = $template->get_form(name => 'myform');
+
+=head1 API
+
+=head2 Constructor
+
+=over
+
+=item new
+
+=back
+
+=cut
 
 sub new
 {
@@ -140,8 +162,10 @@ sub add_element
 	    data => 0,
 	    values => 0,
 	    multiple => 0,
-	    onclick => 0,
 	    remove => 0,
+	    onclick => 0,
+	    onchange => 0,
+	    class => 0,
 	    package => {
 	        optional => 1,
 		isa => 'XHTML::Instrumented::Form::ElementControl',
@@ -296,27 +320,16 @@ sub update_argumants
     $args->{args};
 }
 
+sub name
+{
+    my $self = shift;
+
+    $self->{name};
+}
+
+
 1;
 __END__
-=head1 NAME
-
-XHTML::Instramented::Form - XHTML::Instramented Form Object
-
-=head1 SYNOPSIS
-
-my $template = XHTML::Instrumented->new(name => 'bob');
-
-my $form = $template->get_form(name => 'myform');
-
-=head1 API
-
-=head2 Constructor
-
-=over
-
-=item new
-
-=back
 
 =head2 Methods
 
@@ -353,6 +366,10 @@ my $form = $template->get_form(name => 'myform');
 =item auto
 
 =item update_argumants
+
+=item name
+
+  All forms should have a name.  This C<method> will return the name of the form.
 
 =back
 

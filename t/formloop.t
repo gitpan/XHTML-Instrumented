@@ -14,40 +14,48 @@ my $data = <<DATA;
 <div id="loop">
  <form name="myform">
   <label for="asdf">label</label>
-  <input name="test" id="asdf"/>
+  <input type="text" name="test" id="asdf" value="bob"/>
  </form>
 </div>
 DATA
 
 $cmp = <<DATA;
 <div id="loop">
- <form name="myform" method="post">
+ <form method="post" name="one">
   <label for="asdf.1">label</label>
-  <input name="test" id="asdf.1" value="testme"/>
+  <input type="text" name="test" id="asdf.1" value="testone"/>
  </form>
- <form name="myform" method="post">
+ <form method="post" name="two">
   <label for="asdf.2">label</label>
-  <input name="test" id="asdf.2" value="testme"/>
+  <input type="text" name="test" id="asdf.2" value="testtwo"/>
  </form>
 </div>
 DATA
 
 my $x = XHTML::Instrumented->new(name => \$data, type => '');
 
-my $form = XHTML::Instrumented::Form->new();
+my $form1 = XHTML::Instrumented::Form->new( name => 'one');
+my $form2 = XHTML::Instrumented::Form->new( name => 'two');
 
-$form->add_element(
+$form1->add_element(
     type => 'text',
     name => 'test',
-    value => 'testme',
+    value => 'testone',
+);
+$form2->add_element(
+    type => 'text',
+    name => 'test',
+    value => 'testtwo',
 );
 
 $output = $x->output(
-     myform => $form,
      loop => $x->loop(
-        headers => ['a'],
-        data => [['a'], ['b']],
+        headers => ['a', 'myform'],
+        data => [
+ 	  ['a', $form1 ],
+	  ['b', $form2 ]],
      ),
 );
 
 is_xml($output, $cmp, 'select');
+

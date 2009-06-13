@@ -10,8 +10,6 @@ plan tests => 5;
 require_ok( 'XHTML::Instrumented' );
 require_ok( 'XHTML::Instrumented::Form' );
 
-$ENV{HVNRTMPL} = './templates';
-
 $data = <<DATA;
 <div>
   <a name="bob">bob</a>

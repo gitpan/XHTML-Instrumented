@@ -7,8 +7,6 @@ plan tests => 3;
 
 require_ok( 'XHTML::Instrumented' );
 
-$ENV{HVNRTMPL} = './templates';
-
 my $data = <<DATA;
 <div>
  <form name="myform">
@@ -54,6 +52,7 @@ is_xml($output, $cmp, 'select I');
 
 $t = XHTML::Instrumented->new(name => \$data, type => '');
 $form = $t->get_form();
+my $s =
 $form->add_element(
     type => 'select',
     name => 'select',

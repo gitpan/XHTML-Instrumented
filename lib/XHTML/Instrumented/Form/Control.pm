@@ -14,6 +14,10 @@ sub args
     my %hash;
     $hash{action} = $self->{self}{action} if $self->{self}{action};
     $hash{method} = $self->{self}{method} if $self->{self}{method};
+    if (my $name = $self->{self}{name}) {
+        $hash{name} = $name;
+    }
+
     ('method', 'post', @_, %hash );
 }
 

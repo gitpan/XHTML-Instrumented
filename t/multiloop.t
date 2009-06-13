@@ -9,8 +9,6 @@ plan tests => 2;
 
 require_ok( 'XHTML::Instrumented' );
 
-$ENV{HVNRTMPL} = '../templates/';
-
 my $data = <<DATA;
 <div>
  <div id="row">

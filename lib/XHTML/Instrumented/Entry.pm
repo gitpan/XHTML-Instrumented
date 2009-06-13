@@ -33,13 +33,14 @@ sub copy()
     my $self = shift;
     my %p =  Params::Validate::validate( @_, {
             args => 0,
-            flags => 0,
-            special => 0,
-            tag => 0,
-            form => 0,
-            control => { isa => 'XHTML::Instrumented::Control' },
+            control => { optional => 1, isa => 'XHTML::Instrumented::Control' },
 	    data => 0,
 	    extra => 0,
+            flags => 0,
+            form => 0,
+	    id => 0,
+            special => 0,
+            tag => 0,
 	}
     );
 
@@ -356,7 +357,15 @@ How this object is used.
 
 =over
 
+=back
+
+=head2 Constructors
+
+=over
+
 =item new
+
+This object is normally created by the XHTML::Instrumented parser.
 
 =back
 
@@ -364,26 +373,42 @@ How this object is used.
 
 =over
 
-=item new
 =item copy
+
 =item split_char
+
 =item child
+
 =item prepend
+
 =item id
+
 =item name
+
 =item in_loop
+
 =item append
+
 =item context
+
 =item tag
+
 =item args
+
 =item flags
-=item _get_id
+
 =item if
+
 =item control
+
 =item children
+
 =item is_form
+
 =item is_label
+
 =item expand
+
 =item are_if
 
 =back

@@ -8,8 +8,6 @@ use Data::Dumper;
 
 require_ok( 'XHTML::Instrumented' );
 
-$ENV{HVNRTMPL} = `pwd` . '/../templates/';
-
 my $data = <<DATA;
 <div>
  <span id="bob.if">bob</span>

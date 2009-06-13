@@ -7,8 +7,6 @@ plan tests => 2;
 
 require_ok( 'XHTML::Instrumented' );
 
-$ENV{HVNRTMPL} = './templates';
-
 $data = <<DATA;
 <div>
   <form name="myform" method="post">

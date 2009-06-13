@@ -7,8 +7,6 @@ use Test::XML;
 require_ok( 'XHTML::Instrumented' );
 require_ok( 'XHTML::Instrumented::Form' );
 
-$ENV{HVNRTMPL} = './templates';
-
 my $data = <<DATA;
 <div>
  <form name="myform">

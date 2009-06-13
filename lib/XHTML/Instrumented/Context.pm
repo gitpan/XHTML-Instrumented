@@ -62,12 +62,25 @@ sub get_form
     my $id = shift;
     my $ret;
 
-    if (UNIVERSAL::isa($self->{hash}{$id}, 'XHTML::Instrumented::Form')) {
-	$ret = $self->{hash}{$id}->_control;
-	if (my $count = $self->{count} && $ret) {
-	    $ret->set_id_count($count);
+    if (my $loop = $self->{loop}) {
+	if ($loop->get_id($id)) {
+	    $ret = $loop->get_id($id)->_control;
+	    if (my $count = $self->{count} && $ret) {
+		$ret->set_id_count($count);
+	    }
 	}
-    } else {
+    }
+    if (!$ret) {
+	if (UNIVERSAL::isa($self->{hash}{$id}, 'XHTML::Instrumented::Form')) {
+	    $ret = $self->{hash}{$id}->_control;
+	    if (my $count = $self->{count} && $ret) {
+		$ret->set_id_count($count);
+	    }
+	} else {
+	    warn $id, ' is not a form';
+	}
+    }
+    if ($ret && !$ret->is_form) {
 	warn $id, ' is not a form';
     }
 

@@ -31,6 +31,8 @@ sub new
 	values => 0,
 #	multiple => 0,
 	onclick => 0,
+	onchange => 0,
+	class => 0,
 	data => {
 	    optional => 1,
 	    type => ARRAYREF,
@@ -181,14 +183,14 @@ sub set_value
 	$self->{value} = $value;
     }
     $value = $self->{value};
-use Data::Dumper;
-    for my $element (@{$self->{data} || []}) {
-        delete $element->{selected};
-	if ($value eq $element->value) {
-	    $element->{selected} = 1;
+    if (defined $value) {
+	for my $element (@{$self->{data} || []}) {
+	    delete $element->{selected};
+	    if ($value eq ($element->value || '')) {
+		$element->{selected} = 1;
+	    }
 	}
     }
-
 }
 
 sub value

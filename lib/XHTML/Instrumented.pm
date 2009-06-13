@@ -15,11 +15,11 @@ XHTML::Instrumented - packages to control XHTML
 
 =head1 VERSION
 
-Version 0.08
+Version 0.09
 
 =cut
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 our @CARP_NOT = ( 'XML::Parser::Expat' );
 
@@ -42,7 +42,7 @@ sub cachepath
     $self->{cachepath} || $cachepath || $self->path;
 }
 
-sub cachefile
+sub cachefilename
 {
     my $self = shift;
     my $file = $self->cachepath;
@@ -125,10 +125,13 @@ sub new
 	unless (-f "$filename.html") {
 	    $filename = $self->{filename} = "$path/$name";
 	}
+	unless (-f "$filename.html") {
+	    die "File not found: $filename";
+	}
     }
 
     if ($filename) {
-	my $cachefile = $self->cachefile;
+	my $cachefile = $self->cachefilename;
 
 	my @path = split('/', $cachefile);
 	pop @path;
@@ -154,7 +157,7 @@ sub new
 	       }
 	    }
 	    require Storable;
-	    Storable::store($self->{parsed}, $cachefile );
+	    Storable::nstore($self->{parsed}, $cachefile );
 	} else {
 	    die "File not found: $filename";
 	}
@@ -163,7 +166,11 @@ sub new
 	    croak "no template for $name [$path/$type/$name.tmpl]" unless (-f "$path/$type/$name.tmpl");
 	}
 	$self->{parsed} = $self->parse(
-	    $name
+	    $name,
+	    name => '_scalar_',
+	    replace_name => $self->{replace_name} || 'home',
+	    path => $self->path,
+	    cachepath => $self->cachepath,
 	);
     }
 
@@ -286,7 +293,7 @@ sub parse
 	    $parser->parsefile($filename);
 	};
 	if ($@) {
-	    die "$@ $filename";
+	    croak "$@ $filename";
 	}
     }
     bless({
@@ -354,6 +361,17 @@ sub instrument
     }
 
     $ret;
+}
+
+sub head 
+{
+    my $self = shift;
+    my %hash = (@_);
+
+    return $self->instrument(
+        content_tag => 'head',
+	control => { %hash },
+    );
 }
 
 sub output
@@ -454,7 +472,11 @@ sub _sh
     }
     if (exists($self->{_inform_}) && $child->name) {
 	my $form_id = $self->{_inform_id_};
-	$self->{_inform_ids_}{$form_id}{$child->name} = $tag;
+	if ($form_id) {
+	    $self->{_inform_ids_}{$form_id}{$child->name} = $tag;
+	} else {
+	    warn "Fix this";
+	}
     }
     push(@{$self->{__context__}},
         $child,    
@@ -511,26 +533,30 @@ sub _eh
 	return;
     }
 
-    if ($args->{class} && grep(/:replace/, split('\s+', $args->{class}))) {
+    if ($args->{class} && (my @names = grep(/:replace/, split('\s+', $args->{class})))) {
 	my $out;
+	die "Only one replace per tag" if @names != 1;
+
 	my $gargs = $self->{__args__};
 	my $default = $gargs->{default_replace};
-	my ($name, $file) = split('.', $args->{id});
+	my ($name, $file) = split('\.', $names[0]);
 
-	die if $file;
+	$file ||= $self->{__args__}->{replace_name} || die;
 
-	if ($self->{__args__}{name} ne 'home') {
+	if ($self->{__args__}{name} ne $file) {
 	    $out = XHTML::Instrumented->new(
 	       path  => $self->{path},
 	       cachepath => $self->{cachepath},
 	       %{$gargs},
-	       name => 'home',
+	       name => $file,
 	    );
 	} else {
 	}
 
 	if ($out) {
 	    my $id = $args->{id};
+die 'Need an id for :replace' unless defined $id;
+die 'Replacement not found' unless $out->{parsed}{idr}{$id};
 
 	    $current = $out->{parsed}{idr}{$id};
 	}
@@ -546,8 +572,8 @@ sub _eh
 sub _ah
 {
     my $self = shift;
-    $self->xpcroak(@_);
-    die;
+
+    die q(We don't do these here);
 }
 
 sub _ch
@@ -609,32 +635,115 @@ be changed in several ways.
 
 =head1 SYNOPSIS
 
+ use XHTML::Instrumented;
+
+ my $dom = XHTML::Instrumented->new(
+    path => '/var/www/html',
+    type => 'nl',
+    default_type => 'en',
+    name => 'index',
+
+    cachepath => '/tmp/the_cache_path/',
+
+ # run time
+    replace_name => 'home',
+
+ # compile time
+
+    filter => sub {
+        my $tag = shift;
+	my $args = shift;
+	if (my $path = $args->{href}) {
+
+	}
+    },
+ };
+
+This will load the file C</var/www/html/nl/index.html> or if that is not found
+C</var/www/html/en/index.html> or an exception will be thrown.
+
+You can also directly input html, although this is mainly used for testing.
+
+ use XHTML::Instrumented;
+
+ my $dom = XHTML::Instrumented->new(
+    name => \"<html><head></head><body>hi</body></html>",
+ );
+
+You can also directly give a complete filename.
+
+ use XHTML::Instrumented;
+
+ my $dom = XHTML::Instrumented->new(
+    filename => '/var/www/html/en/index.html',
+ );
+
 =head1 API
 
 =head2 Constructor
 
 =over
 
-=item new(file => [I<filename> | SCALAR ])
+=item new
+
+The new() constructor method instantiates a new C<XHTML::Intrumented> object.
+The template is either compiled or loaded as well. 
+
+The parameters to the constructor are describe in more detail in the
+descriptions of the methods with the same name 
+path() name() type() default_type() extension() filename() cachepath() replace_name()
+
+There is also a C<filter> parameter: it is a call-back that allows the
+arguments to C<tags> to be modified at compile time.
 
 Get a XHTML::Instrumented object.
 
 =back
 
-=head2 Functions
+=head2 Accessor Methods
 
 =over
 
-=item parse(input)
+=item filename
 
-This causes the input to be parsed.
+This the complete name (path and filename) of the file that was compiled
+to create the object. If the input was not from a file this will be undefined.
+This is either build up from the path, type or default_type, name and extension
+values or is set directly by the constructor.
 
-if I<input> is string it is assumed to be a filename.
-If I<input> is a SCALAR is is treated as HTML;
+=item path
 
-=item instrument
+This is the base path to the input file. It is set by an argument to the constructor.
 
-This function take the template and the control structure and returns a block of XHTML.
+=item name
+
+This is the base name of the input file. It is set by an argument to the constructor.
+
+=item type
+
+This is the default type of the input file. This is really just an extra element to the 
+path. It is set by an argument to the constructor.
+
+=item default_type
+
+If the file is not found using the C<type> then this is tried.
+
+=item extension
+
+This is the extension to the file.  It defaults to ".html' and can be set by the constructor.
+
+=item cachepath
+
+This is the base directory where the I<cache file> will be stored. It is
+set by an argument to the constructor.
+
+=item cachefilename
+
+This is the full name of the I<cache file>.
+
+=item replace_name
+
+This is the default name of the file that will be used by the I<:replace> operator.
 
 =back
 
@@ -646,11 +755,17 @@ This function take the template and the control structure and returns a block of
 
 This returns the modified xhtml.
 
+=item head
+
+This returns the html between the Head tags!
+
 =item get_form
 
 This returns a form object.
 
-=item loop
+=item loop()
+
+Get a C<loop> control object.
 
    headers => [array of headers]
    data => [arrays of data]
@@ -661,9 +776,23 @@ inclusive is normally controlled in the template.
 
 =item replace
 
+This return a general control object. I can control 4 actions:
+
+=over
+
+=item replace the arguments to a tag.
+
+=item replace the content of a tag.
+
+=item remove the tag it self.
+
+=back
+
 =item args
 
-same as replace(args => { @_ });
+C<args> is a helper function.  It is the same as:
+
+ replace(args => { @_ });
 
 =back
 
@@ -671,26 +800,42 @@ same as replace(args => { @_ });
 
 =over
 
-=item path
-
-Get the default path to the templates
-
-=item cachepath
-
-Get the default path to the compiled templates
-
-=item cachefile
-
-Get the full path and filename of the compiled template.
-
 =item get_tag('tag')
 
 Return a list of XHTML::Intramented::Entry objects that have type 'tag';
 
 =back
 
+=head2 Functions
+
+Both of these functions are used internally by the XHTML::Instrumented
+and are only listed here for completeness.
+
+=over
+
+=item parse(input)
+
+This causes the input to be parsed.
+
+if I<input> is a string it is assumed to be a filename.
+If I<input> is a SCALAR is is treated as HTML;
+
+=item instrument()
+
+This function take the template and the control structure and returns a block of XHTML.
+
+=back
+
+
 =head1 AUTHOR
 
 "G. Allen Morris III" <gam3@gam3.net>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright (C) 2007-2008 G. Allen Morris III, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
 
 =cut

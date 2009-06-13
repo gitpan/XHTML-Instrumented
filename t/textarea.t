@@ -9,8 +9,6 @@ use Test::Warn;
 require_ok( 'XHTML::Instrumented' );
 require_ok( 'XHTML::Instrumented::Form' );
 
-$ENV{HVNRTMPL} = './templates';
-
 my ($data, $cmp);
 
 $data = <<DATA;

@@ -27,7 +27,7 @@ DATA
 
 is_xml($output, $cmp, 'test');
 
-my $cachefile = $x->cachefile;
+my $cachefile = $x->cachefilename;
 
 ok(-r $cachefile, 'file created');
 

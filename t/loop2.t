@@ -7,8 +7,6 @@ plan tests => 6;
 
 require_ok( 'XHTML::Instrumented' );
 
-$ENV{HVNRTMPL} = `pwd` . '/../templates/';
-
 my $data = <<DATA;
 <div>
  <ol id="list">

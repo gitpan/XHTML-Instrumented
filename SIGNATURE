@@ -14,87 +14,95 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 a1af5d7a49829c2cc9fa1e29dfb6310176c915df Build.PL
-SHA1 cfff473de12c241d8cd4b36d8ecf6bbba1426c0d Changes
-SHA1 4b762a6f26c982979fc184e10ad744d869ab58f3 MANIFEST
-SHA1 a7e6ed34b3a580dc2b5d85fb378b5bf26755a954 META.yml
-SHA1 d965653e06dcde85e8ce8b18f2de26c64613a961 Makefile.PL
-SHA1 a478b2e8d8e2bd3ee58382bbdb8753418caa2a18 README
+SHA1 d2dabfdb89a941ff20f5b699f1d3233697865cf8 Build.PL
+SHA1 686a63519dc82519f2ce58c67cdddc20dd59ebda Changes
+SHA1 fb98dba5a4b76fec1d946f60aae190efc03e49d5 MANIFEST
+SHA1 1699f4c119d9911105fec382479cc805f29d0ddc META.yml
+SHA1 6b9afcf732f10d3fced4c124910e8b05d4f97286 Makefile.PL
+SHA1 d37cb13a1a0d61f8aecc1dea58c94a93ab66c764 README
 SHA1 6f99f9639443947ccedc5a71d94511994afc03a3 examples/README
 SHA1 4e647b5d4922690a9ae9e9fddfea8a0061d71879 examples/checkbox.cgi
 SHA1 e29e8e90764797d76144bb4ba82d4b5a9d27c4be examples/index.cgi
 SHA1 b5a6b310fbad72f09d436aac5288104fc8e351b1 examples/multi.cgi
 SHA1 4ffcda65e89fa8eb9f9e466c0a328ec5420f1bfc examples/test.cgi
 SHA1 fc1083b9e8841c31ce0d0c704b5815dab5433b76 examples/test.html
-SHA1 80553e8c7cbcb9633ab7922966b8d4b8c0cfccb8 lib/XHTML/Instrumented.pm
-SHA1 04fbb3cc90fc64ecb810ad17ef68648910be946d lib/XHTML/Instrumented/Context.pm
+SHA1 da0374bf66353660e28396ab59b5c741946e4650 lib/XHTML/Instrumented.pm
+SHA1 4abcf1ff19d474a2fd29c669992d3c95782e9d24 lib/XHTML/Instrumented/Context.pm
 SHA1 4266d6caf0c1f4ddcfb7092f1ce7def87da4acf6 lib/XHTML/Instrumented/Control.pm
-SHA1 6b45717b12f9eeb1d45a173839a9170bd15c3ad1 lib/XHTML/Instrumented/Entry.pm
-SHA1 b4ccf4f9f775b5a017afb66c3e6a8fa0300f38f4 lib/XHTML/Instrumented/Form.pm
+SHA1 b0536d68150c98f0d227cd666470a05b74fd5ffb lib/XHTML/Instrumented/Entry.pm
+SHA1 240ddb09c552ed9df1310828eb2d03ef19bef085 lib/XHTML/Instrumented/Form.pm
 SHA1 735a764c1a325ec6c3448933f147e6a3a44b96cd lib/XHTML/Instrumented/Form/Checkbox.pm
-SHA1 cef343d007bb365c010c949b96205b934ca4d001 lib/XHTML/Instrumented/Form/Control.pm
+SHA1 8c05b1baac48379cc5e2b95280a339cb4690623b lib/XHTML/Instrumented/Form/Control.pm
 SHA1 5632624e518e75f453a8001708f3cb877db2f339 lib/XHTML/Instrumented/Form/Element.pm
 SHA1 92da841ea510884ad3d71d4fa4e0a9b430f2d1a6 lib/XHTML/Instrumented/Form/ElementControl.pm
 SHA1 ddb535bfefa8af8ff0fa1110650ca2f3186b71f9 lib/XHTML/Instrumented/Form/Hidden.pm
 SHA1 2952d334f562c203d16911cf86d6d25c1e24243b lib/XHTML/Instrumented/Form/Option.pm
-SHA1 7462555b76bf68b3e389c4fda880524c9708da97 lib/XHTML/Instrumented/Form/Select.pm
-SHA1 84746c6c6fecad838e348fb70e44fd2c767870b4 lib/XHTML/Instrumented/Loop.pm
-SHA1 f3556a296dd97839c2629f01979097245c777777 save
+SHA1 b0fecf82336e1f2d13006c670f4301311af9b01c lib/XHTML/Instrumented/Form/Select.pm
+SHA1 aeadb3b68db04254b5f4dba342b8e1d7cd41ccef lib/XHTML/Instrumented/Loop.pm
 SHA1 1e81bebc1e41c7dcd1e1f6dca5055ac025b1794e t/args.t
 SHA1 10fc7fb290106cfbb6b266caa0ad4253a63f5f58 t/cdata.t
+SHA1 f95eb9bd37ddab4b8ca2672f1248fe2dd452bb83 t/changes.t
 SHA1 5d4c7d5824a934644b29b398aa5b14bd3620ba57 t/checkbox.t
 SHA1 1e6e289d1b1f8320495ca58b5cf772d8360cb438 t/checkbox_loop.t
 SHA1 72db95f4d13a848e59fb1c0454b18bd9b10ac897 t/checkbox_loop2.t
-SHA1 0f8991d24593018f5abfb684c67e48b000b597f5 t/eqloop.t
-SHA1 75336d490a29f184116e0ca2c73b03ada92a860e t/file.t
+SHA1 e778a528a812f288fe3e822489859f8508de09d8 t/coverage.t
+SHA1 d7e9a198032f32e74089fefcc994bd9aa7892916 t/entry.t
+SHA1 5d794e30612c84d13c5724f49d0aecf43525cf98 t/eqloop.t
+SHA1 552b82e5bb5459c2a8c7a44f29df8f3c902277bb t/file.t
 SHA1 5ee733e13de031ed5252e4899ca891ebff146354 t/filter.t
-SHA1 fbda58275cbf5a385e693c0de23f1a42d7d01e87 t/for.t
-SHA1 ed183e673a4dde143126c2076a28e87a5ae1b817 t/form.t
-SHA1 66edd00e3ae048fbfc8fd487c78693fb7d70bca9 t/form1.t
-SHA1 ef28da91ac80e327bf227a68556acd2551abc6b1 t/form2.t
-SHA1 ea99558b6e11fad18843d27050808d73e37dc694 t/form3.t
-SHA1 c8f89a547a9feaa36e799f1231ade801ddb528f5 t/form4.t
-SHA1 adfd84f43f3ae20a4d210a5f55efc135fa2756da t/id.t
+SHA1 923295ff298e388d47b1a4e6401fd263c2330697 t/for.t
+SHA1 41c2dd713e47434c931e35a9b0e8ec3824656f39 t/form.t
+SHA1 deb98075c067a5445bc7ebe0c0cbe68819bdb9e8 t/form1.t
+SHA1 bd1dac17d65f4987859fac64a048f1feb3767989 t/form2.t
+SHA1 7e905661c968994639cab45113d0d8302e7b2cc5 t/form3.t
+SHA1 6d156c08661aeb187fe52c2196ddf587ae75c0e0 t/form4.t
+SHA1 2ef038bcd1a875528b6ef072d157de318bdd7a9f t/formloop.t
+SHA1 a560ed78d13dafacdbbc627c4ad122ef6bb92e6b t/head.t
+SHA1 77a29bc7ac776022e703300261c504d1f48d8117 t/id.t
 SHA1 9d1f043404f736ac1dd663a001501e9a7e5daf8b t/ids.t
-SHA1 0e8f86b189b44844da3f32742a900599c76320fc t/if.t
-SHA1 23ddf6847ec9ecbf2b5fd414db3f969de5485f55 t/if1.t
-SHA1 827208587cc6ba4bbe328dcc5a612952d7dde451 t/ifloop.t
-SHA1 10bf2c3df66b092ac755a4d66c8b9d83d771dc9a t/l1.t
-SHA1 cd4d6a8812190d462e8f7bf701fff1c6d2a597e1 t/label.t
-SHA1 76f45a14b75a366af09958510e0013473afd2a6b t/list.t
-SHA1 71f9d999ed98b1773f69ab593a529023515d38bb t/loop.t
-SHA1 23a9002c72a25aa8b6c8d133d3434720862b1f3a t/loop2.t
-SHA1 45057f4a6d7efe431f85860ac65d390572508dfa t/loop_input.t
-SHA1 9bb16440479d50e4ef36193c9f7f16e5c8ff8367 t/mm.t
-SHA1 1b32c08da4de211638d3207ba89f6007d0b26787 t/mm2.t
-SHA1 7a1011f33c4c9f040b1f320fdf0a54116fc22ecb t/multiloop.t
-SHA1 3ceb4a7999fcd445a9ce458068fe286d2cfba86b t/multiloop2.t
-SHA1 2cdf3f24cd804eef866d2abc09b41a9f1f79adea t/multiselect.t
+SHA1 ac532293ba21160109497cabde299614bb804a57 t/if.t
+SHA1 fd97b2f1783ece5cd5a2c0c87e060a91a7f95e51 t/if1.t
+SHA1 ae93f965b7be5cf49b4de8466a63b94e92e07376 t/ifloop.t
+SHA1 aeb43b9d59df91f812a133a5820791d95ca9cf45 t/l1.t
+SHA1 995241f2b398a5043fc80f1b5647407eb4ba3ae7 t/label.t
+SHA1 091219e43bb5ac090d0bebb9b5d0cbf5c5b91c88 t/list.t
+SHA1 19cef35f9ecb468d326aac24b79b76aaf0ef41e5 t/loop.t
+SHA1 c87b0a0fe8d9d172d84d767605a15a883c8a5354 t/loop2.t
+SHA1 fd036af4672f2463ea9b5d0d1d28212c1ffb5666 t/loop_eo.t
+SHA1 9fa74740338cdf92d8d06cebd8e9c141b5d8cb89 t/loop_input.t
+SHA1 efca0027fe57ee6e9fe07674031049feac300238 t/misc.t
+SHA1 847fdddc0d98488e7bdefaaab30743e44fd9f511 t/mm.t
+SHA1 a1cbaf680b65a6545316ced2ba69124cc060620e t/mm2.t
+SHA1 f9249a673cae49c925323c2df109e8ae53de40d5 t/multiloop.t
+SHA1 2ac24e75e8326389cf3ed32e884310ee3d259e5a t/multiloop2.t
+SHA1 ef8733a8cb895fae022166be61bff8af323a6172 t/multiselect.t
 SHA1 111187617dc55262934c60686bdbd7e01574ab36 t/parse.t
+SHA1 47dcb16cc72a690648dd472e2ca304b8b8583f4c t/parse_replace.html
+SHA1 96caa2a83933b15b242324c521aa2eb33bde6b02 t/parse_replace.t
 SHA1 9d38eb83b6fa38c6d35dc1892b5a03f108e0719f t/pod.t
-SHA1 1255f17de94bf569503519d5e9a2c5d5692f800f t/pod_coverage.t
+SHA1 2adc8acd2956b87972abc56ff01f46541e86165b t/pod_coverage.t
 SHA1 54ba612e5559ea5f07a9927634806a7e6c3361b0 t/remove.t
-SHA1 5ceb79dd41f54904ffa205b2c239245b8a95f5f7 t/remove_tag.t
-SHA1 64e07c9d4e64dba108c132b23664ccac6be5c4be t/replace.t
-SHA1 8157a4638cfdbdee66b3126f35f62ef5df481523 t/select.t
-SHA1 0bc8f4c951cc6873510debfd5bd854b0d7716529 t/select2.t
+SHA1 5ab65847fa06e4c385d8db6e4115ed1581d96b65 t/remove_tag.t
+SHA1 9c4c1e411a064e935554469fb98022b09db8772c t/replace.t
+SHA1 459dbec8649d49d4023e13bd692c0f6775cea123 t/select.t
+SHA1 b90d15599b2b0b67549b2aa9e3bdc7ce3ed57ede t/select2.t
 SHA1 75b119b6b7198ba37f0371f59cd7425861f6683a t/simple.t
-SHA1 c9014fbc9af5b1025a205e789100b4143fc00e68 t/simpleloop.t
-SHA1 077fa955d279cf1ffa5ad47bdb07dd98e9f7e7f5 t/t_if.t
-SHA1 0d2be472d7ab30ad2adecc002e2dd0ddb6d5642b t/table_columns.t
-SHA1 705e05289ef47a780bc2094e279dcc69e1eff2e3 t/template_data.t
-SHA1 c323449e2697120b2a85ade6e2a943280b2a40ce t/template_replace.t
-SHA1 89c31de912364e055984b2045310403ed572ba1d t/template_table.t
-SHA1 d29d595e2c54b6e218705763bfc142ccb74f2ad8 t/text.t
-SHA1 74253843e55108d4b5ec9ca4dad0e002872846ba t/textarea.t
-SHA1 b3fe6c125722ffed88e35fcc8291ab8ce27effa6 t/vlabel.t
+SHA1 50cdda392e9c555b496f48f942de07a5f4bd6d7a t/simpleloop.t
+SHA1 1c5fd68620815bd9fb24df215ea9095c3c46ee84 t/t_if.t
+SHA1 59b7748ef5ae3501d799d6b59720b4dc952d9295 t/table_columns.t
+SHA1 7cc6b1133f6ef3176925010f5482816005f0a0a0 t/template_data.t
+SHA1 df2af78abac1045e2cb1de31180a3497ca680b2e t/template_replace.t
+SHA1 eae9b400d4e3ca9af95f47d64b09c8e2af3e2b04 t/template_table.t
+SHA1 69a80ad566ea19ecda4eb8775fdd4630a77f10dc t/text.t
+SHA1 48f69d5669234697d9889797796f39e5536553a0 t/textarea.t
+SHA1 afe10344184d5ea1346cb3497d1ee00a5e9fe859 t/vlabel.t
 SHA1 ada24b3373150f5e68f63bb11d90d0604a1e4d7e t/x1.t
-SHA1 ff5997673fca6e1924e2b3bbe3b9468b1fd0cec7 t/xlabel.t
+SHA1 864db6cbc6259da23031b8477b9941abcc89bc87 t/xlabel.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.6 (GNU/Linux)
+Version: GnuPG v1.4.9 (GNU/Linux)
 
-iGcEARECACcFAkdokL8gGmh0dHA6Ly93d3cuZ2FtMy5uZXQvcG9saWN5Lmh0bWwA
-CgkQliSr/X1H0Fw2iQCfdF0aK3hLNVPhXXvf3P+6lLeIC54AniYJ1rp0FHd+l/oa
-AgvTFWu3ek2O
-=Xd1i
+iGcEARECACcFAkozjxAgGmh0dHA6Ly93d3cuZ2FtMy5uZXQvcG9saWN5Lmh0bWwA
+CgkQliSr/X1H0FzrJQCfePoc5T1kh614vqJq4luK/ATTcpcAoMjL3eHX0XhHqYAa
+bctCqnEzoQ4V
+=rzAJ
 -----END PGP SIGNATURE-----
